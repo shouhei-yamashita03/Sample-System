@@ -13,6 +13,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'turbo-rails'
 gem 'devise'
+gem 'bootstrap', '~> 5.3.0'
+gem 'sassc-rails', '>= 2.1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

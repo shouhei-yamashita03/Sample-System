@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   devise_scope :user do
     root 'devise/sessions#new'
-    # get '/users/sign_out' => 'devise/sessions#destroy'
+    get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
