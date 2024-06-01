@@ -15,6 +15,8 @@ gem 'turbo-rails'
 gem 'devise'
 gem 'bootstrap', '~> 5.3.0'
 gem 'sassc-rails', '>= 2.1.0'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
