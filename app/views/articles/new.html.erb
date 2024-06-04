@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <% if flash[:success] %>
+                <div class="alert alert-success">
+                    <%= flash[:success] %>
+                </div>
+            <% elsif flash[:error] %>
+                <div class="alert alert-danger">
+                    <%= flash[:error] %>
+                </div>
+            <% end %>
+            <h1>記事の新規作成</h1>
+            <%= form_for @article do |f| %>
+
+            <%= f.label :title, class: "label-form" %>
+            <%= f.text_field :title, class: "form-control" %>
+
+            <%= f.label :content, class: "label-form" %>
+            <%= f.text_area :content, class: "form-control" %>
+
+            <%= f.label :image, class: "label-form" %>
+            <%= f.file_field :image, class: "form-control" %>
+
+            <div class="text-center">
+                <%= f.submit I18n.t('helpers.submit.create'), class: "btn btn-primary btn-form" %>
+            </div>
+            <% end %>
+            <%= link_to "戻る", articles_path, class: "btn btn-link" %>
+        </div>
+    </div>
+</div>
