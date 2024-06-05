@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            <% if flash[:success] %>
+                <div class="alert alert-success">
+                    <%= flash[:success] %>
+                </div>
+            <% end %>
+            <h1>記事詳細</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>タイトル</th>
+                            <th>内容</th>
+                            <th>画像</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td></td>
+                            <td><%= @article.title %></td>
+                            <td><%= @article.content %></td>
+                            <td>
+                            <% if @article.image.present? %>
+                                <%= image_tag "test.png", class: "img-fluid", size: "50x50" %>
+                            <% else %>
+                                画像なし
+                            <% end %>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <%= link_to "編集", edit_article_path(@article), class: "btn btn-success" %>
+                    <%= link_to "削除", @article, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+                    <br />
+                    <%= link_to "記事一覧へ戻る", articles_path, class: "btn btn-primary btn-form" %>
+                </div>
+        </div>
+    </div>
+</div>
+

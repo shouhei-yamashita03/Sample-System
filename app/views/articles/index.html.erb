@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            <% if flash[:success] %>
+                <div class="alert alert-success">
+                    <%= flash[:success] %>
+                </div>
+            <% end %>
+            <h1>記事一覧</h1>
+            <div class="d-grid col-5 mx-auto text-center">
+                <%= link_to "記事新規作成", new_article_path, class: "btn btn-primary btn-block" %>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>詳細表示</th>
+                        <th>タイトル</th>
+                        <th>内容</th>
+                        <th>画像</th>
+                        <th>編集・削除</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <% @articles.each do |article| %>
+                        <tr>
+                            <td></td>
+                            <td><%= link_to "詳細表示", article_path(article), class: "btn btn-primary" %></td>
+                            <td><%= article.title %></td>
+                            <td><%= article.content %></td>
+                            <td>
+                                <% if article.image.present? %>
+                                    <%= image_tag "test.png", class: "img-fluid", size: "100x100" %>
+                                <% else %>
+                                    画像なし
+                                <% end %>
+                            </td>
+                            <td>
+                                <%= link_to "編集", edit_article_path(article), class: "btn btn-success" %>
+                                <%= link_to "削除", article, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            <%= link_to "戻る", user_dash_boards_path(current_user), class: "btn btn-link" %>
+        </div>
+    </div>
+</div>
